@@ -129,7 +129,8 @@ client.on('messageCreate', (message) => {
             while(str.indexOf("||") > -1){
                 str = str.replace("||", "");
             }
-            message.reply(str);
+            if(str.length > 0) message.reply(str)
+            else message.reply("Noch niemand in der Liste :)")
             break;
         case "info":
             infoText = "Befehle: \n !pay @username - @username muss 0.25€ bezahlen | z.B. !pay @Anton#3479 \n !pay @username zahl - @username muss zahl bezahlen | z.B. !pay @Anton#3479 1.25 \n !paid @username zahl - @username hat zahl bezahlt | z.B. !paid @Anton#3479 1.25 \n !list - Um einen Überblick über den Strafenkatalog zu erhalten";
