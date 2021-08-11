@@ -1,0 +1,25 @@
+{
+  "name": "cash_discordbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/bot.js",
+    "dev": "nodemon ./src/bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anhilly/Cash_DiscordBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anhilly/Cash_DiscordBot/issues"
+  },
+  "homepage": "https://github.com/Anhilly/Cash_DiscordBot#readme",
+  "dependencies": {
+    "discord.js": "^13.0.1",
+    "dotenv": "^10.0.0"
+  }
+}
