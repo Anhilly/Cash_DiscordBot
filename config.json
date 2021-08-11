@@ -1,1 +1,4 @@
-
+{
+    "token": "your discord token",
+    "prefix": "!"
+}
