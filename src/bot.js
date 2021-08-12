@@ -120,7 +120,7 @@ client.on('messageCreate', (message) => {
             else if(args.length === 3) updateData(usertag, "pay", parseFloat(args[2]));
             break;
         case "paid":
-            if(args.length === 1) {message.reply("Bitte gib an wer bezahlt hat und wie viel mit !paid @username amount"); break;}
+            if(args.length <= 2) {message.reply("Bitte gib an wer bezahlt hat und wie viel mit !paid @username amount"); break;}
             updateData(findUsertagToID(args[1], message), "paid", parseFloat(args[2]));
             break;
         case "list":
@@ -132,7 +132,7 @@ client.on('messageCreate', (message) => {
             else message.reply("Noch niemand in der Liste :)")
             break;
         case "info":
-            infoText = "Befehle: \n !pay @username - @username muss 0.25€ bezahlen | z.B. !pay @Anton#3479 \n !pay @username zahl - @username muss zahl bezahlen | z.B. !pay @Anton#3479 1.25 \n !paid @username zahl - @username hat zahl bezahlt | z.B. !paid @Anton#3479 1.25 \n !list - Um einen Überblick über den Strafenkatalog zu erhalten";
+            infoText = "Befehle: \n "+ config.prefix+"pay @username - @username muss 0.25€ bezahlen | z.B. "+config.prefix+"pay @Anton#3479 \n "+config.prefix+"pay @username zahl - @username muss zahl bezahlen | z.B. "+config.prefix+"pay @Anton#3479 1.25 \n "+config.prefix+"paid @username zahl - @username hat zahl bezahlt | z.B. "+config.prefix+"paid @Anton#3479 1.25 \n "+config.prefix+"list - Um einen Überblick über den Strafenkatalog zu erhalten";
             message.reply(infoText)
             break;
     }
