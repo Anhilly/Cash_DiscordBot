@@ -78,6 +78,7 @@ function readUserList(){
  * Updates the Data of a user and write everything to file.
  */
 function updateData(usertag, type, amount){
+    if(typeof usertag === "undefined") return
     updateUserList(usertag, type, amount);
     updateFile();
 }
@@ -100,7 +101,7 @@ function findUsertagToID(userID, message){
     id = stripMessageForID(userID)
     
     if(id.length > 5) {
-        if(client.users.cache.find(u => u.id === id) === "undefined"){
+        if(typeof client.users.cache.find(u => u.id === id) === "undefined"){
             message.reply("Bitte benutze einen anderen User...");
         } else {
             return client.users.cache.find(u => u.id === id).tag;
