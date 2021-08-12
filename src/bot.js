@@ -98,8 +98,14 @@ function updateUserList(usertag, type, amount){
  */
 function findUsertagToID(userID, message){
     id = stripMessageForID(userID)
-    if(id.length > 5) return client.users.cache.find(u => u.id === id).tag
-    else message.reply("Bitte benutze einen anderen User...")   
+    
+    if(id.length > 5) {
+        if(client.users.cache.find(u => u.id === id) === "undefined"){
+            message.reply("Bitte benutze einen anderen User...");
+        } else {
+            return client.users.cache.find(u => u.id === id).tag;
+        }
+    } else message.reply("Bitte benutze einen anderen User...");
 }
 
 client.on('ready', () => {
