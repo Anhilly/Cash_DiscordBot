@@ -19,7 +19,6 @@
   },
   "homepage": "https://github.com/Anhilly/Cash_DiscordBot#readme",
   "dependencies": {
-    "discord.js": "^13.0.1",
-    "dotenv": "^10.0.0"
+    "discord.js": "^13.0.1"
   }
 }
