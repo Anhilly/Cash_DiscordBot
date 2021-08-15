@@ -135,7 +135,10 @@ client.on('messageCreate', (message) => {
             while(str.indexOf("||") > -1){
                 str = str.replace("||", "");
             }
-            if(str.length > 0) message.reply(str)
+            let sum = 0;
+            userMap.forEach((value) => {sum += value})
+            let sumString = "\n --------------------------------------------" + "\n Gesamt: " + sum;
+            if(str.length > 0) message.reply(str + sumString)
             else message.reply("Noch niemand in der Liste :)")
             break;
         case "info":
