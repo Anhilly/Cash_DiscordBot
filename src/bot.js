@@ -97,8 +97,8 @@ function updateData(usertag, type, amount){
  * @param {} usertag The usertag of the user
  */
 function updateUserList(usertag, type, amount){
-        if(type === "pay" && !isNaN(amount)) userMap.set(usertag, userMap.has(usertag) ? (userMap.get(usertag) + amount).toFixed(2) : amount.toFixed(2) );
-        else if(type === "paid") userMap.set(usertag,userMap.has(usertag) ? (userMap.get(usertag) - amount).toFixed(2) : -amount.toFixed(2) );
+        if(type === "pay" && !isNaN(amount)) userMap.set(usertag, userMap.has(usertag) ? parseFloat((userMap.get(usertag) + amount).toFixed(2)) : parseFloat(amount.toFixed(2) ));
+        else if(type === "paid") userMap.set(usertag,userMap.has(usertag) ? parseFloat((userMap.get(usertag) - amount).toFixed(2)) : parseFloat(-amount.toFixed(2)) );
         else userMap.set(usertag, parseFloat("0.25"));
 }
 
@@ -144,7 +144,7 @@ client.on('messageCreate', (message) => {
             while(str.indexOf("||") > -1){
                 str = str.replace("||", "");
             }
-            let sum = 0;
+            let sum = 0.0;
             userMap.forEach((value) => {sum += value})
             let sumString = "\n --------------------------------------------" + "\n Gesamt: " + sum;
             if(str.length > 0) message.reply(str + sumString)
