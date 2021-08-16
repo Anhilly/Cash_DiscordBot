@@ -97,8 +97,8 @@ function updateData(usertag, type, amount){
  * @param {} usertag The usertag of the user
  */
 function updateUserList(usertag, type, amount){
-        if(type === "pay" && !isNaN(amount)) userMap.set(usertag, userMap.has(usertag) ? userMap.get(usertag) + amount : amount);
-        else if(type === "paid") userMap.set(usertag,userMap.has(usertag) ? userMap.get(usertag) - amount : -amount);
+        if(type === "pay" && !isNaN(amount)) userMap.set(usertag, userMap.has(usertag) ? (userMap.get(usertag) + amount).toFixed(2) : amount.toFixed(2) );
+        else if(type === "paid") userMap.set(usertag,userMap.has(usertag) ? (userMap.get(usertag) - amount).toFixed(2) : -amount.toFixed(2) );
         else userMap.set(usertag, parseFloat("0.25"));
 }
 
