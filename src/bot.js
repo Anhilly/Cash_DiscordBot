@@ -29,8 +29,8 @@ function stripMessageForID(msg){
  */
 function objectArrayToString(){
     let strArrUL = "";
-
-    for (let [key, value] of  userMap.entries()) {
+    const sortedMap = new Map([...userMap.entries()].sort((a, b) => b[1] - a[1]));
+    for (let [key, value] of  sortedMap.entries()) {
         strArrUL = strArrUL.concat("||", "User: ",key, ", Price: ", value.toString(), "\n")
     }
 
