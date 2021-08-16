@@ -50,6 +50,14 @@ function updateFile(){
     });
 
 }
+/**
+ * Removes all entries with value 0
+ */
+function cleanMap(){
+    for(let [key, value] of userMap){
+        if(value === 0) userMap.delete(key);
+    }
+}
 
 /**
  * Reads the logfile and adds the Data to the userList
@@ -80,6 +88,7 @@ function readUserList(){
 function updateData(usertag, type, amount){
     if(typeof usertag === "undefined") return
     updateUserList(usertag, type, amount);
+    cleanMap();
     updateFile();
 }
 
