@@ -24,6 +24,21 @@ function stripMessageForID(msg){
 }
 
 /**
+ * This Functions merges two User Entries
+ * @param {*} oldUser Usertag of the old User
+ * @param {*} newUser Usertag of the new User
+ * @param {*} message the message
+ */
+function mergeUser(oldUser, newUser, message){
+    newUser = findUsertagToID(newUser, message);
+    if(userMap.has(oldUser) &&  newUser === message.author.tag){
+        userMap.set(newUser, userMap.has(newUser) ? userMap.get(oldUser) + userMap.get(newUser) : userMap.get(oldUser));
+        userMap.delete(oldUser)
+    }
+    updateFile();
+}
+
+/**
  * Turns the userList(Object Array) to a simple string array through appending the strings
  * @returns the new String array
  */
@@ -33,7 +48,6 @@ function objectArrayToString(){
     for (let [key, value] of  sortedMap.entries()) {
         strArrUL = strArrUL.concat("||", "User: ",key, ", Price: ", value.toString(), "\n")
     }
-
     return strArrUL;
 }
 
@@ -151,8 +165,11 @@ client.on('messageCreate', (message) => {
             else message.reply("Noch niemand in der Liste :)")
             break;
         case "info":
-            infoText = "Befehle: \n "+ config.prefix+"pay @username - @username muss 0.25€ bezahlen | z.B. "+config.prefix+"pay @Anton#3479 \n "+config.prefix+"pay @username zahl - @username muss zahl bezahlen | z.B. "+config.prefix+"pay @Anton#3479 1.25 \n "+config.prefix+"paid @username zahl - @username hat zahl bezahlt | z.B. "+config.prefix+"paid @Anton#3479 1.25 \n "+config.prefix+"list - Um einen Überblick über den Strafenkatalog zu erhalten";
+            infoText = "Befehle: \n " + config.prefix + "pay @username - @username muss 0.25€ bezahlen | z.B. " + config.prefix + "pay @Anton#3479 \n "+ config.prefix +"pay @username zahl - @username muss zahl bezahlen | z.B. "+config.prefix+"pay @Anton#3479 1.25 \n "+config.prefix+"paid @username zahl - @username hat zahl bezahlt | z.B. "+config.prefix+"paid @Anton#3479 1.25 \n "+config.prefix+"list - Um einen Überblick über den Strafenkatalog zu erhalten";
             message.reply(infoText)
             break;
+        case "merge":
+            if(args.length != 3) message.reply("Bitte geb an welche User du mergen möchtest mit !merge alterUsername#1234 @neuerUsername");
+            mergeUser(args[1], args[2], message);
     }
 })
