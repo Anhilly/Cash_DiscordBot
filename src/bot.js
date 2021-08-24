@@ -169,7 +169,10 @@ client.on('messageCreate', (message) => {
             message.reply(infoText)
             break;
         case "merge":
-            if(args.length != 3) message.reply("Bitte geb an welche User du mergen möchtest mit "+config.prefix+"merge alterUsername#1234 @neuerUsername");
+            if(args.length != 3) {
+                message.reply("Bitte geb an welche User du mergen möchtest mit "+config.prefix+"merge alterUsername#1234 @neuerUsername");
+                break;
+            }
             mergeUser(args[1], args[2], message);
     }
 })
