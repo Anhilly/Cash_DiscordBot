@@ -165,11 +165,11 @@ client.on('messageCreate', (message) => {
             else message.reply("Noch niemand in der Liste :)")
             break;
         case "info":
-            infoText = "Befehle: \n " + config.prefix + "pay @username - @username muss 0.25€ bezahlen | z.B. " + config.prefix + "pay @Anton#3479 \n "+ config.prefix +"pay @username zahl - @username muss zahl bezahlen | z.B. "+config.prefix+"pay @Anton#3479 1.25 \n "+config.prefix+"paid @username zahl - @username hat zahl bezahlt | z.B. "+config.prefix+"paid @Anton#3479 1.25 \n "+config.prefix+"list - Um einen Überblick über den Strafenkatalog zu erhalten";
+            infoText = "Befehle: \n " + config.prefix + "pay @username - @username muss 0.25€ bezahlen | z.B. " + config.prefix + "pay @Anton#3479 \n "+ config.prefix +"pay @username zahl - @username muss zahl bezahlen | z.B. "+config.prefix+"pay @Anton#3479 1.25 \n "+config.prefix+"paid @username zahl - @username hat zahl bezahlt | z.B. "+config.prefix+"paid @Anton#3479 1.25 \n "+config.prefix+"list - Um einen Überblick über den Strafenkatalog zu erhalten" + config.prefix + "merge alterUsername#1234 @neuerUsername - Um die zwei User zusammenzuführen";
             message.reply(infoText)
             break;
         case "merge":
-            if(args.length != 3) message.reply("Bitte geb an welche User du mergen möchtest mit !merge alterUsername#1234 @neuerUsername");
+            if(args.length != 3) message.reply("Bitte geb an welche User du mergen möchtest mit "+config.prefix+"merge alterUsername#1234 @neuerUsername");
             mergeUser(args[1], args[2], message);
     }
 })
